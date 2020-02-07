@@ -1,0 +1,10 @@
+{% markdown %}
+    Olá, **{{ user.fullName() }}!**
+
+    Parece que você solicitou uma redefinição de senha. Caso não tenha, ignore este email.
+
+    Para voltar à sua conta, [escolha uma nova senha]({{ config.get('app.url') }}{{ route('auth.password.reset') }}?email={{ user.email }}&code={{ code }}) e depois é só efetuar seu login normalmente.
+    ___
+
+    <span style="color:grey">Para garantir que você continue recebendo esses e-mails, adicione {{ config.get('app.email') }} ao seu catálogo de endereços ou na lista de e-mails autorizados.</span>
+{% endmarkdown %}

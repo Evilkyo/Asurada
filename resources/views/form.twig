@@ -1,0 +1,75 @@
+{% extends 'layouts/app.twig' %}
+
+{% block content %}
+
+    <div class="container">
+      {% include 'components/status.twig' %}
+        <div class="columns">
+            
+
+            <main class="column" role="main">
+                <div class="card">
+                  <header class="card-header">
+                    <p class="card-header-title">
+                      Home
+                    </p>
+                  </header>
+                  <div class="card-content">
+                    <div class="content">
+
+                      <form action="{{ route('upload') }}" name="upload" method="post" enctype="multipart/form-data">
+                        {{ csrf() | raw }}
+{#                           <input name="send" value="<?= ($formSend ?? ""); ?>"/>
+                          <input name="name" type="text" value="Nome do arquivo" required/>
+                          <input name="file" type="file" required/>
+                          <button class="green"><?= $formSend; ?></button> #}
+                      
+
+
+                        <div class="field">
+                          <label class="label">Nome</label>
+                          <input name="name" class="input{{ errors.name ? ' is-danger' : '' }}" type="text" value="{{ old.first_name }}">
+
+                          {% if errors.name %}
+                            <p class="help is-danger">{{ errors.name | first }}</p>
+                          {% endif %}
+                        </div>
+                        
+                        <div class="field">
+                          <div class="file">
+                            <label class="file-label">
+                              <input class="file-input{{ errors.file ? ' is-danger' : '' }}" type="file" name="file">
+                              <span class="file-cta">
+                                <span class="file-icon">
+                                  <i class="fas fa-upload"></i>
+                                </span>
+                                <span class="file-label">
+                                  Normal file…
+                                </span>
+                              </span>
+                            </label>
+                          </div>
+
+                          {% if errors.file %}
+                            <p class="help is-danger">{{ errors.file | first }}</p>
+                          {% endif %}
+                        </div>
+
+                        <div class="field-body">
+                          <div class="field">
+                            <div class="control">
+                              <button class="button is-primary">
+                                Send message
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+
+                      </form>
+                    </div>
+                  </div>
+                </div>
+            </main>
+        </div>
+    </div>
+{% endblock %}

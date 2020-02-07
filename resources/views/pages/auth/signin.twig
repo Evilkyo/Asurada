@@ -1,0 +1,75 @@
+{% extends 'layouts/app.twig' %}
+
+{% block content %}
+	<div class="columns is-centered">
+		<div class="column is-7 is-centered">
+
+			<div class="column is-centered">
+				<div class="content has-text-centered">
+					<h2 class="title is-2 is-spaced">Olá</h2>
+					<h6 class="subtitle is-6">Que ótimo vê-lo novamente. Agora, faça o login e aproveite tudo que o site tem a oferecer!</h6>
+				</div>
+			</div>
+
+			{% include 'components/status.twig' %}
+
+			<div class="tile is-child box">
+				<form action="{{ route('auth.signin') }}" method="POST">
+					{{ csrf() | raw }}
+
+					<div class="field">
+						<label class="label" for="email">E-mail</label>
+						<input name="email" class="input{{ errors.email ? ' is-danger' : '' }} is-medium" type="email">
+
+						{% if errors.email %}
+							<p class="help is-danger">{{ errors.email | first }}</p>
+						{% endif %}
+					</div>
+
+					<div class="field">
+						<label class="label" for="password">Senha</label>
+						<input name="password" class="input{{ errors.password ? ' is-danger' : '' }} is-medium" type="password">
+
+						{% if errors.password %}
+							<p class="help is-danger">{{ errors.password | first }}</p>
+						{% endif %}
+					</div>
+
+
+					<div class="columns">
+						<div class="column is-half is-two-fifths">
+							<div class="control">
+								<label class="checkbox">
+									<input type="checkbox" name="persist">
+									Lembrar-me
+								</label>
+							</div>
+						</div>
+
+						<div class="column">
+							<div class="control">
+								<a href="{{ route('auth.activation.recover') }}"><strong>Reenviar email de ativação</strong></a>
+							</div>
+						</div>
+
+						<div class="column">
+							<div class="control">
+								<a href="{{ route('auth.password.recover') }}"><strong>Esqueceu sua senha?</strong></a>
+							</div>
+						</div>
+					</div>
+
+					<div class="field">
+						<p class="control">
+							<button class="button is-info is-fullwidth is-medium">
+								Entrar
+							</button>
+						</p>
+					</div>
+
+					<input type="hidden" name="redirect" value="{{ redirect }}">
+				</form>                    
+			</div>
+		</div>
+	</div>
+{% endblock %}

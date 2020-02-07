@@ -1,0 +1,37 @@
+{% extends 'layouts/app.twig' %}
+
+{% block content %}
+    <div class="columns is-centered">
+        <div class="column is-7 is-centered">
+
+            <div class="column is-centered">
+                <div class="content has-text-centered">
+                    <h2 class="title is-2 is-spaced">Esqueceu sua senha?</h2>
+                    <h6 class="subtitle is-6">Isso contece. Entre com seu endereço de email e nós enviaremos a você um link para redefinir sua senha.</h6>
+                </div>
+            </div>
+
+            {% include 'components/status.twig' %}
+
+            <div class="tile is-child box">
+                <form action="{{ route('auth.password.recover') }}" method="POST">
+                    {{ csrf() | raw }}
+
+                    <div class="field">
+                        <input name="email" class="input{{ errors.email ? ' is-danger' : '' }} is-medium" type="email">
+
+                        {% if errors.email %}
+                            <p class="help is-danger">{{ errors.email | first }}</p>
+                        {% endif %}
+                    </div>
+
+                    <p class="control">
+                        <button class="button is-info is-medium is-fullwidth">
+                            Continuar
+                        </button>
+                    </p>
+                </form>                    
+            </div>
+        </div>
+    </div>
+{% endblock %}

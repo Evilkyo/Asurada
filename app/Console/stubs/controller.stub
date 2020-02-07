@@ -1,0 +1,43 @@
+<?php
+
+namespace DummyNamespace;
+
+use App\Views\View;
+use App\Controllers\Controller;
+use Laminas\Diactoros\Response;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
+
+class DummyClass extends Controller
+{
+    /**
+     * [$view description]
+     * 
+     * @var [type]
+     */
+    protected $view;
+
+    /**
+     * [__construct description]
+     * 
+     * @param View $view [description]
+     */
+    public function __construct(View $view)
+    {
+        $this->view = $view;
+    }
+
+    /**
+     * [index description]
+     * 
+     * @param  ServerRequestInterface $request [description]
+     * @return [type]                          [description]
+     */
+    public function index(ServerRequestInterface $request) : ResponseInterface
+    {
+        // Response
+        $response = new Response;
+
+        return $this->view->render($response, 'path/to/view.twig');
+    }
+}

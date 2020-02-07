@@ -1,0 +1,10 @@
+{% markdown %}
+    # Olá, {{ user.fullName() }}!
+
+    Por favor ative sua conta.
+
+    Ativar: [Ativar Conta]({{ config.get('app.url') }}/auth/ativar/{{ user.id }}/{{ activation.code }} "Ativar Conta")
+
+    Atenciosamente,
+    Equipe MeuApp
+{% endmarkdown %}

@@ -1,0 +1,81 @@
+{% extends 'pages/account/layouts/default.twig' %}
+
+{% block account_content %} 
+    <div class="container">
+        <div class="content">
+            <h4>Atualizar perfil</h4>
+            <hr>
+        </div>
+
+        {% include 'components/status.twig' %}
+
+        <div class="columns">
+            <div class="column">
+                <div class="card">
+                    <div class="card-content">
+                        <div class="content">
+                            <form action="{{ route('account') }}" method="POST">    
+                                {{ csrf() | raw }}
+                                <label class="label" for="first_name">Nome</label>
+                                <div class="field">
+
+                                    <input 
+                                    type="text" 
+                                    name="first_name" 
+                                    id="first_name" 
+                                    class="input{{ errors.first_name ? ' is-danger' : '' }} is-medium" 
+                                    value="{{ old.first_name ?: user.first_name }}"
+                                    >
+
+                                    {% if errors.first_name %}
+                                        <p class="help is-danger">{{ errors.first_name | first }}</p>
+                                    {% endif %}
+                                </div>
+
+                                <label class="label" for="last_name">Sobrenome</label>
+                                <div class="field">
+
+                                    <input 
+                                    type="text" 
+                                    name="last_name" 
+                                    id="last_name" 
+                                    class="input{{ errors.last_name ? ' is-danger' : '' }} is-medium" 
+                                    value="{{ old.last_name ?: user.last_name }}"
+                                    >
+
+                                    {% if errors.last_name %}
+                                        <p class="help is-danger">{{ errors.last_name | first }}</p>
+                                    {% endif %}
+                                </div>        
+
+                                <div class="field">
+                                    <label class="label" for="email">E-mail</label>
+                                    <input 
+                                    type="email" 
+                                    name="email" 
+                                    id="email" 
+                                    class="input{{ errors.email ? ' is-danger' : '' }} is-medium"  
+                                    placeholder="Digite seu e-mail"
+                                    value="{{ old.email ?: user.email }}"
+                                    >
+
+                                    {% if errors.email %}
+                                        <p class="help is-danger">{{ errors.email | first }}</p>
+                                    {% endif %}
+                                </div>
+
+                                <div class="field">
+                                    <p class="control">
+                                        <button class="button is-info is-medium is-fullwidth">
+                                          Atualizar
+                                        </button>
+                                    </p>
+                                </div>
+                            </form>               
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>    
+{% endblock %}

@@ -1,0 +1,8 @@
+{% markdown %}
+    Ei, **{{ user.fullName() }}!**
+
+    Apenas confirmando que a senha da sua conta foi alterada com sucesso. Espero que tenha sido você, mas se não foi, me avise imediatamente.
+    ___
+
+    <span style="color:grey">Para garantir que você continue recebendo esses e-mails, adicione {{ config.get('app.email') }} ao seu catálogo de endereços ou na lista de e-mails autorizados.</span>
+{% endmarkdown %}

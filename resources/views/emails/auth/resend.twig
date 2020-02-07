@@ -1,0 +1,12 @@
+{% markdown %}
+    Seja bem-vindo, **{{ user.fullName() }}!**
+
+    Para poder ter acesso ao site, é necessário primeiro ativar sua conta.
+
+    Ativar: [Ativar Conta]({{ config.get('app.url') }}ativar/{{ user.id }}/{{ code }} "Ativar Conta")
+    ___
+    
+    <span style="color:grey">Para garantir que você continue recebendo esses e-mails, adicione {{ config.get('app.email') }} ao seu catálogo de endereços ou na lista de e-mails autorizados.</span>
+{% endmarkdown %}
+
+

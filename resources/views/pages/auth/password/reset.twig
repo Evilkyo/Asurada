@@ -1,0 +1,50 @@
+{% extends 'layouts/app.twig' %}
+
+{% block content %}
+    <div class="columns is-centered">
+        <div class="column is-7 is-centered">
+
+            <div class="column is-centered">
+                <div class="content has-text-centered">
+                    <h2 class="title is-2 is-spaced">Quase lá</h2>
+                    <h6 class="subtitle is-6">Escolha uma nova senha e você terá acesso novamente a sua conta. Ufa.</h6>
+                </div>
+            </div>
+
+            {% include 'components/status.twig' %}
+
+            <div class="tile is-child box">
+                <form action="{{ route('auth.password.reset') }}" method="POST">
+                    {{ csrf() | raw }}
+
+                    <div class="field">
+                        <label class="label">Senha</label>
+                        <input name="password" class="input{{ errors.password ? ' is-danger' : '' }} is-medium" type="password">
+
+                        {% if errors.password %}
+                            <p class="help is-danger">{{ errors.password | first }}</p>
+                        {% endif %}
+                    </div>
+
+                    <div class="field">
+                        <label class="label">Confirme a Senha</label>
+                        <input name="password_confirmation" class="input{{ errors.password_confirmation ? ' is-danger' : '' }} is-medium" type="password">
+
+                        {% if errors.password_confirmation %}
+                            <p class="help is-danger">{{ errors.password_confirmation | first }}</p>
+                        {% endif %}
+                    </div>
+
+                    <p class="control">
+                        <button class="button is-info is-medium is-fullwidth">
+                            Redefinir
+                        </button>
+                    </p>
+
+                    <input type="hidden" name="email" value="{{ email }}">
+                    <input type="hidden" name="code" value="{{ code }}">
+                </form>                    
+            </div>
+        </div>
+    </div>
+{% endblock %}

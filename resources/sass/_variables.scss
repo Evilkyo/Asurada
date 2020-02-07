@@ -1,0 +1,61 @@
+// Fontawasome
+@import '~@fortawesome/fontawesome-free/scss/fontawesome';
+@import '~@fortawesome/fontawesome-free/scss/regular';
+@import '~@fortawesome/fontawesome-free/scss/solid';
+@import '~@fortawesome/fontawesome-free/scss/brands';
+
+// Import a Google Font
+@import url('https://fonts.googleapis.com/css?family=Nunito:400,600,700&display=swap');
+
+// Set your brand colors
+$purple: #8A4D76;
+$pink: #FA7C91;
+$brown: #757763;
+$beige-light: #D0D1CD;
+$beige-lighter: #EFF0EB;
+$white: #FFFFFF;
+$white-ter: #F5F5F5;
+
+// Update Bulma's global variables
+$family-sans-serif: "Nunito", sans-serif;
+$help-size: 1.00rem;
+// $grey-dark: $brown;
+// $grey-light: $beige-light;
+// $primary: #ffffff;
+// $link: $pink;
+// $widescreen-enabled: true;
+// $fullhd-enabled: true;
+
+// Hr
+$hr-background-color: #C9D2E1;
+$hr-height: 1px;
+// $hr-margin: 2.0rem 0;
+
+// Update some of Bulma's component variables
+$body-background-color: #F5F7FA;
+// $control-border-width: 0.5px;
+// $box-radius: 1px;
+
+// Navbar
+$navbar-background-color: $white;
+// $navbar-box-shadow-size: 0 5px 0 0;
+// $navbar-item-hover-background-color: $white-ter;
+// $navbar-height: 2.25rem;
+
+// Input
+$input-border-color: #DBDEEA;
+$input-focus-border-color: #DBDEEA;
+
+// Controll
+// $control-padding-horizontal: 5.75em;
+
+// Button
+$button-border-color: #DBDEEA;
+$button-focus-border-color: #DBDEEA;
+
+// Card
+// $card-color: #DBDEEA;
+$card-shadow: 0rem;
+// $card-background-color: #DBDEEA;
+// $card-header-shadow: 0.00rem 0.10rem;
+$card-header-padding: 1.25rem 1rem;

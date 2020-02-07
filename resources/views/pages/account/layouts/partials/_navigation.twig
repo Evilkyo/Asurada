@@ -1,0 +1,16 @@
+<div class="aside column is-one-fifth is-narrow sidebar">
+	<p class="menu-label">
+		Conta
+	</p>
+	<ul class="menu-list">
+		<li>
+			<a href="{{ route('account') }}" class="{{ is_current_url('account') ? 'is-active' : '' }}">Perfil</a>
+		</li>
+		<li>
+			<a href="{{ route('account.password') }}" class="{{ is_current_url('account.password') ? 'is-active' : '' }}">Trocar senha</a>
+		</li>
+		{# <li>
+			<a href="{{ route('teste', { 'email' : user.email }) }}">Trocar senha</a>
+		</li> #}
+	</ul>
+</div>

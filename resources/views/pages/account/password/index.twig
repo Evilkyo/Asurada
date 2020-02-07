@@ -1,0 +1,77 @@
+{% extends '/pages/account/layouts/default.twig' %}
+
+{% block account_content %}
+    <div class="container">
+        
+        <div class="content">
+            <h4>Trocar senha</h4>
+            <hr>
+        </div>
+
+        {% include 'components/status.twig' %}
+
+        <div class="columns">
+            <div class="column">
+                <div class="card">
+                    <div class="card-content">
+                        <div class="content">
+                            <form action="{{ route('account.password') }}" method="POST">
+                                {{ csrf() | raw }}
+
+                                <div class="field">
+                                    <label class="label" for="password_current">Senha atual</label>
+                                    <input 
+                                    type="password" 
+                                    name="password_current" 
+                                    id="password_current" 
+                                    class="input{{ errors.password_current ? ' is-danger' : '' }} is-medium"
+                                    >
+
+                                    {% if errors.password_current %}
+                                        <p class="help is-danger">{{ errors.password_current | first }}</p>
+                                    {% endif %}
+                                </div>
+
+                                <div class="field">
+                                    <label class="label" for="password">Nova senha</label>
+                                    <input 
+                                    type="password" 
+                                    name="password" 
+                                    id="password" 
+                                    class="input{{ errors.password ? ' is-danger' : '' }} is-medium"
+                                    >
+
+                                    {% if errors.password %}
+                                        <p class="help is-danger">{{ errors.password | first }}</p>
+                                    {% endif %}
+                                </div>
+
+                                <div class="field">
+                                    <label class="label" for="password_confirmation">Confirme a nova senha</label>
+                                    <input 
+                                    type="password" 
+                                    name="password_confirmation" 
+                                    id="password_confirmation" 
+                                    class="input{{ errors.password_confirmation ? ' is-danger' : '' }} is-medium"
+                                    >
+
+                                    {% if errors.password_confirmation %}
+                                        <p class="help is-danger">{{ errors.password_confirmation | first }}</p>
+                                    {% endif %}
+                                </div>
+
+                                <div class="field">
+                                    <div class="control">
+                                        <button class="button is-info is-medium is-fullwidth">
+                                            Atualizar Senha
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>  
+{% endblock %}

@@ -1,0 +1,24 @@
+<?php
+
+use App\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+
+class CreatePersistencesTable extends Migration
+{
+    public function up()
+    {
+        $this->schema->create('persistences', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->bigInteger('user_id')->unsigned()->index();
+            $table->string('code')->unique();
+            $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+        });
+    }
+
+    public function down()
+    {
+        $this->schema->dropIfExists('persistences');
+    }
+}

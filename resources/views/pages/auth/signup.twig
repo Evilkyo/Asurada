@@ -1,0 +1,81 @@
+{% extends 'layouts/app.twig' %}
+
+{% block content %}
+	{% include 'components/status.twig' %}
+
+	<div class="columns is-centered">
+		<div class="column is-7 is-centered">
+
+			<div class="column is-centered">
+				<div class="content has-text-centered">
+					<h2 class="title is-2 is-spaced">Crie uma conta e proveite</h2>
+					<h6 class="subtitle is-6">Que ótimo vê-lo novamente. Agora, faça o login e aproveite tudo que o site tem a oferecer!</h6>
+				</div>
+			</div>
+
+			<div class="tile is-child box">
+				<form action="{{ route('auth.signup') }}" method="POST">
+					{{ csrf() | raw }}
+
+					<div class="field">
+						<label class="label">E-mail</label>
+						<input name="email" class="input{{ errors.email ? ' is-danger' : '' }} is-medium" type="email" value="{{ old.email }}">
+
+						{% if errors.email %}
+							<p class="help is-danger">{{ errors.email | first }}</p>
+						{% endif %}
+					</div>
+
+					<div class="field">
+						<label class="label">Nome</label>
+						<input name="first_name" class="input{{ errors.first_name ? ' is-danger' : '' }} is-medium" type="text" value="{{ old.first_name }}">
+
+						{% if errors.first_name %}
+							<p class="help is-danger">{{ errors.first_name | first }}</p>
+						{% endif %}
+					</div>
+
+					<div class="field">
+						<label class="label">Sobrenome</label>
+						<input name="last_name" class="input{{ errors.last_name ? ' is-danger' : '' }} is-medium" type="text" value="{{ old.last_name }}">
+
+						{% if errors.last_name %}
+							<p class="help is-danger">{{ errors.last_name | first }}</p>
+						{% endif %}
+					</div>
+
+					<div class="field">
+						<label class="label">Senha</label>
+						<input name="password" class="input{{ errors.password ? ' is-danger' : '' }} is-medium" type="password">
+
+						{% if errors.password %}
+							<p class="help is-danger">{{ errors.password | first }}</p>
+						{% endif %}
+					</div>
+
+					<div class="field">
+						<label class="label">Confirme a Senha</label>
+						<input name="password_confirmation" class="input{{ errors.password_confirmation ? ' is-danger' : '' }} is-medium" type="password">
+
+						{% if errors.password_confirmation %}
+							<p class="help is-danger">{{ errors.password_confirmation | first }}</p>
+						{% endif %}
+					</div>
+
+					<div class="field">
+						<p class="control">
+							<button class="button is-info is-medium is-fullwidth">
+								Criar conta
+							</button>
+						</p>
+					</div>
+				</form>                    
+			</div>
+		</div>
+	</div>
+	<div class="column is-centered">
+		<div class="content has-text-centered">
+			<p>Já tem uma conta? <a href="{{ route('auth.signin') }}">Entrar</a></p>
+		</div>
+	</div>
+{% endblock %}

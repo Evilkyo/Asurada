@@ -1,0 +1,35 @@
+{% if flash.has('success') %}
+    <div class="content">
+        <div class="container">
+            <article class="message is-succes">
+                <div class="message-body">
+                    {{ flash.get('success') }}
+                </div>
+            </article>
+        </div>
+    </div>
+{% endif %}
+
+{% if flash.has('status') %}
+    <div class="content">
+        <div class="container">
+            <article class="message is-info">
+                <div class="message-body">
+                    {{ flash.get('status') }}
+                </div>
+            </article>
+        </div>
+    </div>
+{% endif %}
+
+{% if flash.has('error') %}
+    <div class="content">
+        <div class="container">
+            <article class="message is-danger">
+                <div class="message-body">
+                    {{ flash.get('error') }}
+                </div>
+            </article>
+        </div>
+    </div>
+{% endif %}

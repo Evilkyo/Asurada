@@ -1,0 +1,39 @@
+{% extends 'layouts/app.twig' %}
+
+{% block content %}
+	<div class="columns is-centered">
+		<div class="column is-7 is-centered">
+
+			<div class="column is-centered">
+				<div class="content has-text-centered">
+					<h2 class="title is-2 is-spaced">Não recebeu seu email de ativação?</h2>
+					<h6 class="subtitle is-6">Não tem problema, é só entrar com seu email no formulário abaixo que te enviamos outro.</h6>
+				</div>
+			</div>
+
+			{% include 'components/status.twig' %}
+
+			<div class="tile is-child box">
+				<form action="{{ route('auth.activation.recover') }}" method="POST">
+					{{ csrf() | raw }}
+
+					<div class="field">
+						<input name="email" class="input{{ errors.email ? ' is-danger' : '' }} is-medium" type="email">
+
+						{% if errors.email %}
+							<p class="help is-danger">{{ errors.email | first }}</p>
+						{% endif %}
+					</div>
+
+					<div class="field">
+						<p class="control">
+							<button class="button is-info is-medium is-fullwidth">
+								Reenviar
+							</button>
+						</p>
+					</div>
+				</form>                    
+			</div>
+		</div>
+	</div>
+{% endblock %}
